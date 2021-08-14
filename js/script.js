@@ -5,9 +5,7 @@ document.getElementById('login-page').addEventListener('click',function(){
     const userPassword=passwordField.value;
   
    if(userEmail== 'nagib@gmail.com' && userPassword=='nagib'){
-           
+           window.location.href='bank.html';
    }
-   else{
-       console.log('Email & Password mismatch');
-   }
+   
 })
