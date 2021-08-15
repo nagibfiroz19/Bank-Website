@@ -7,5 +7,8 @@ document.getElementById('login-page').addEventListener('click',function(){
    if(userEmail== 'nagib@gmail.com' && userPassword=='mithi'){
            window.location.href='bank.html';
    }
+   else{
+           document.getElementById('error-msg').classList.remove('hidden');
+   }
    
 })
