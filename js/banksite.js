@@ -18,6 +18,7 @@ document.getElementById('deposit-button').addEventListener('click',function(){
         const previousBalanceAmount=parseFloat(balanceText);
 
         const newBalanceTotal= previousBalanceAmount + newDepositAmount;
+        //const newBalanceTotal = newBalanceTotal.toFixed(2)
         balanceTotal.innerText=newBalanceTotal;
 
         depositField.value='';
