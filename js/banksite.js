@@ -1,40 +1,43 @@
-document.getElementById('deposit-button').addEventListener('click',function(){
-        const depositField=document.getElementById('deposit-input');
-        // Update Deposit total 
-        const newDepositText=depositField.value;
-        const newDepositAmount=parseFloat(newDepositText);
-        const depositMoney=document.getElementById('depositMoney');
-        const previousDepositText=depositMoney.innerText;
-        const previousDepositAmount = parseFloat(previousDepositText);
-        const newDepositTotal =previousDepositAmount+newDepositAmount;
+        function getInputValue(inputId){
+                // handle deposit Button 
+        const inputField=document.getElementById(inputId);
+        const inputAmountText=inputField.value;
+        const amountValue=parseFloat(inputAmountText);
+        inputField.value='';
+        return amountValue;
+        }
+        function addWithPrevious(transAmount){
+                const depositMoney=document.getElementById(transAmount);
+                const previousDepositText=depositMoney.innerText;
+                const taka = parseFloat(previousDepositText);  
+                return  taka;
+        }
 
-        console.log(newDepositTotal);
+        document.getElementById('deposit-button').addEventListener('click',function(){
+
+        const newDepositAmount=getInputValue('deposit-input');
+        previousDepositAmount= addWithPrevious('depositMoney' );
+        const newDepositTotal =previousDepositAmount+newDepositAmount;
         depositMoney.innerText=newDepositTotal;
 
-        // update balace total 
+        // update balance total 
 
         const balanceTotal=document.getElementById('balanceMoney');
         const balanceText=balanceTotal.innerText;
         const previousBalanceAmount=parseFloat(balanceText);
 
         const newBalanceTotal= previousBalanceAmount + newDepositAmount;
-        //const newBalanceTotal = newBalanceTotal.toFixed(2)
         balanceTotal.innerText=newBalanceTotal;
 
-        depositField.value='';
-});
+
+        });
 
         //  Update Withdraw Total 
 
         document.getElementById('withdraw-button').addEventListener('click',function(){
-                const withdrawField= document.getElementById('withdraw-input');
-                const withdrawFieldText=withdrawField.value;
-                const newWithdrawAmount=parseFloat(withdrawFieldText);
-
-                const withdrawMoney=document.getElementById('withdrawMoney');
-                const previousWithdrawText=withdrawMoney.innerText;
-                const previousWithdrawAmount=parseFloat(previousWithdrawText);
-
+        
+                const newWithdrawAmount=getInputValue('withdraw-input');
+                const previousWithdrawAmount =addWithPrevious('withdrawMoney');
                 newWithdrawTotal= previousWithdrawAmount+newWithdrawAmount;
 
                 withdrawMoney.innerText=newWithdrawTotal;
@@ -50,7 +53,7 @@ document.getElementById('deposit-button').addEventListener('click',function(){
                 balanceMoney.innerText=newBalanceTotalAmount;
 
 
-                withdrawField.value='';
+        
 
 
         })
